@@ -162,7 +162,6 @@ elif st.session_state.page == "food":
     tabs1,tabs2 = st.tabs(['Program', 'Informasi Model'])
     
     with tabs1:
-        st.write("Ini tab 1")
         model_101food = hf_hub_download(
             repo_id = "atq-m/101-food",
             filename = "CNN_101-food.h5"
@@ -510,5 +509,6 @@ DISAPPOINTMENT     0.2020    0.4082    0.2703        49
         
     st.write("Halaman untuk model Analisis Sentimen.")
     st.button("⬅️ Kembali ke Home", on_click=go_to_page, args=("home",))
+
 
 
