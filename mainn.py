@@ -169,7 +169,7 @@ elif st.session_state.page == "food":
         )
         
         model_food = tf.keras.models.load_model(model_101food, compile=False)
-        st.write("Input shape model:", model.input_shape)
+        st.write("Input shape model:", model_food.input_shape)
         
         class_names = [
             "apple_pie", "baby_back_ribs", "baklava", "beef_carpaccio", "beef_tartare",
@@ -510,4 +510,5 @@ DISAPPOINTMENT     0.2020    0.4082    0.2703        49
         
     st.write("Halaman untuk model Analisis Sentimen.")
     st.button("⬅️ Kembali ke Home", on_click=go_to_page, args=("home",))
+
 
