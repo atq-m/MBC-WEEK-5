@@ -80,7 +80,7 @@ elif st.session_state.page == "catdog":
         st.write("Input shape model:", model_cd.input_shape)
         
         def preprocess(img):
-            target_size = model.input_shape[1:3]
+            target_size = model_cd.input_shape[1:3]
             img = img.resize(target_size)
             img = np.array(img)/255.0
             return np.expand_dims(img, axis=0)
@@ -168,7 +168,7 @@ elif st.session_state.page == "food":
             filename = "CNN_101-food.h5"
         )
         
-        model = tf.keras.models.load_model(model_101food, compile=False)
+        model_food = tf.keras.models.load_model(model_101food, compile=False)
         st.write("Input shape model:", model.input_shape)
         
         class_names = [
@@ -196,7 +196,7 @@ elif st.session_state.page == "food":
 
 
         def preprocess(img):
-            target_size = model.input_shape[1:3]
+            target_size = model_food.input_shape[1:3]
             img = img.resize(target_size)
             img = np.array(img)/255.0
             return np.expand_dims(img, axis=0)
@@ -207,7 +207,7 @@ elif st.session_state.page == "food":
             st.image(img, caption="Gambar diunggah", use_column_width=True)
             input_img = preprocess(img)
 
-            pred = model.predict(input_img)
+            pred = model_food.predict(input_img)
 
             idx = np.argmax(pred[0])
             label = class_names[idx]
@@ -510,3 +510,4 @@ DISAPPOINTMENT     0.2020    0.4082    0.2703        49
         
     st.write("Halaman untuk model Analisis Sentimen.")
     st.button("⬅️ Kembali ke Home", on_click=go_to_page, args=("home",))
+
